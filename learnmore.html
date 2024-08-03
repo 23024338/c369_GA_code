@@ -14,29 +14,42 @@
         header {
             background-color: lemonchiffon;
             color: black;
-            padding: 16px;
+            padding: 40px;
         }
-    
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
+            display: flex;
+            margin: 0;
         }
-    
+
         nav ul li {
-            display: inline;
-            margin-right: 16px;
+            margin-right: 20px;
         }
-    
+
         nav ul li a {
             color: black;
             text-decoration: none;
         }
-    
+
+        .sign-in {
+            margin-left: auto;
+        }
+
         main {
+            background-color: papayawhip;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: calc(100vh - 140px); 
+            height: calc(100vh - 160px);
+            padding: 20px;
         }
     
         h2 {
@@ -61,21 +74,27 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="solutions.html">Solutions</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-            </ul>
+            <div class="nav-left">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="signin.html" id="sign-in-link">Sign In</a></li>
+                    <li><a href="profile.html" id="sign-in-link">My Profile</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <main>
         <section>
             <h1>Learn More</h1>
-            <form id="subForm" onsubmit="showSuccessMessage(event)">
+            <form id="subForm" onsubmit="subscribe(event)">
                 <p>Want to learn more on how to be your best and avoid making the same mistakes? Subscribe to our premium newsletter to get tips and tricks from professionals on how to invest better!</p>
                 <button id="subscribeButton" type="submit">Subscribe</button>
             </form>
@@ -83,13 +102,29 @@
         </section>
     </main>
     <script>
-        function showSuccessMessage(event) {
+        document.addEventListener("DOMContentLoaded", function() {
+            const subscriptions = JSON.parse(localStorage.getItem("subscriptions")) || [];
+            const isSubscribed = subscriptions.includes("Premium Newsletter Subscription");
+            const button = document.getElementById("subscribeButton");
+            if (isSubscribed) {
+                button.innerText = "Unsubscribe";
+            } else {
+                button.innerText = "Subscribe";
+            }
+        });
+
+        function subscribe(event) {
             event.preventDefault();
             const button = document.getElementById("subscribeButton");
+            let subscriptions = JSON.parse(localStorage.getItem("subscriptions")) || [];
             if (button.innerText === "Subscribe") {
+                subscriptions.push("Premium Newsletter Subscription");
+                localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
                 alert("Successfully subscribed! Confirmation will be sent to your email.");
                 button.innerText = "Unsubscribe";
             } else {
+                subscriptions = subscriptions.filter(sub => sub !== "Premium Newsletter Subscription");
+                localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
                 alert("You have successfully unsubscribed. You will receive a confirmation email soon. Thank you for your time!");
                 button.innerText = "Subscribe";
             }
@@ -98,4 +133,3 @@
     </script>
 </body>
 </html>
-

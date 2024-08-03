@@ -14,46 +14,61 @@
         header {
             background-color: lemonchiffon;
             color: black;
-            padding: 16px;
+            padding: 40px;
         }
-    
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
+            display: flex;
+            margin: 0;
         }
-    
+
         nav ul li {
-            display: inline;
-            margin-right: 16px;
+            margin-right: 20px;
         }
-    
+
         nav ul li a {
             color: black;
             text-decoration: none;
         }
-    
+
+        .sign-in {
+            margin-left: auto;
+        }
+
         main {
+            background-color: papayawhip;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: calc(100vh - 140px); /* Adjust height based on header and footer height */
+            height: calc(100vh - 160px);
+            padding: 20px;
         }
     
         .form-container {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             width: 80%;
-        }
-    
-        .form-section {
-            width: 40%;
             padding: 16px;
             border: 1px solid #ccc;
             border-radius: 8px;
+            background: white;
+        }
+    
+        .form-section {
+            width: 45%;
         }
     
         h2 {
             text-align: center;
+            width: 100%;
         }
     
         label {
@@ -87,23 +102,33 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="solutions.html">Solutions</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="news.html">News</a></li>
-                <li>><a href="contact.html">Contact Us</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-            </ul>
+            <div class="nav-left">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="signin.html" id="sign-in-link">Sign In</a></li>
+                    <li><a href="profile.html" id="sign-in-link">My Profile</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <main>
-        <div class="form-section">
-            <h2>Sign Up</h2>
+        <div class="form-container">
+            <div class="form-section">
+                <h2>Sign Up</h2>
                 <form id="signupForm" method="post">
                     <label for="signup-name">Name:</label>
                     <input type="text" id="signup-name" name="signup-name" required>
+
+                    <label for="phone-number">Mobile Number:</label>
+                    <input type="number" id="phone-number" name="phone-number" required>
                     
                     <label for="signup-email">Email:</label>
                     <input type="email" id="signup-email" name="signup-email" required>
@@ -113,14 +138,28 @@
                     
                     <label for="signup-confirm-password">Confirm Password:</label>
                     <input type="password" id="signup-confirm-password" name="signup-confirm-password" required>
+                </form>
+            </div>
+            <div class="form-section">
+                <h2> </h2> 
+                <form id="signupFormRight" method="post">
+                    <label for="card-number">Card Number:</label>
+                    <input type="number" id="card-number" name="card-number" required>
+
+                    <label for="cvv">CVV:</label>
+                    <input type="number" id="cvv" name="cvv" required>
+
+                    <label for="expiry">Card Expiry Date:</label>
+                    <input type="date" id="expiry" name="expiry" required>
                     
                     <button type="submit">Sign Up</button>
                 </form>
+            </div>
         </div>
     </main>
     <p>Have an account? <a href="signin.html">Sign in here!</a></p>
     <script>
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
+        document.getElementById('signupFormRight').addEventListener('submit', function(event) {
             event.preventDefault(); 
             window.location.href = 'signin.html'; 
         });

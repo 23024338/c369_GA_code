@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Page</title>
+    <title>OTP Verification</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@
         header {
             background-color: lemonchiffon;
             color: black;
-            padding: 16px;
+            padding: 40px;
         }
 
         nav ul {
@@ -92,26 +92,41 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <h1>PAYMENT PAGE</h1>
-        <p>ENTER OTP SENT TO YOUR SMS</p>
-        <input type="text" placeholder="Enter OTP" id="otp-input">
-        <button onclick="submitOTP()">&#10140;</button>
-        <p>didn't receive OTP? click the button below to resend</p>
-        <button class="resend-button" onclick="resendOTP()">RESEND OTP</button>
-    </div>
+    <main>
+        <div class="form-section">
+            <h2>OTP Verification</h2>
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" placeholder="Enter OTP">
+            <button onclick="verifyOTP()">Submit</button>
+            <p>Didn't receive OTP? <button onclick="resendOTP()">Resend OTP</button></p>
+        </div>
+    </main>
+
     <script>
-        function submitOTP() {
-            var otp = document.getElementById('otp-input').value;
+        function verifyOTP() {
+            var otp = document.getElementById('otp').value;
+
+            // Here, any OTP entered will be considered valid
             if (otp) {
-                window.location.href = 'payconfirm.html';
+                var topUpAmount = localStorage.getItem('topUpAmount') * 1;
+                var currentBalance = localStorage.getItem('walletBalance') || '$0.00';
+                var currentBalanceNumber = currentBalance.replace('$', '') * 1;
+
+                var newBalance = currentBalanceNumber + topUpAmount;
+                var newBalanceFormatted = '$' + newBalance.toFixed(2);
+
+                localStorage.setItem('walletBalance', newBalanceFormatted);
+                localStorage.removeItem('topUpAmount');
+
+                alert('OTP verified and wallet topped up successfully!');
+                window.location.href = 'profile.html';
             } else {
                 alert('Please enter the OTP.');
             }
         }
 
         function resendOTP() {
-            alert('OTP resent.');
+            alert('OTP resent');
         }
     </script>
 </body>
