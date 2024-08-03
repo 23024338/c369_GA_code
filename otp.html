@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gain More</title>
+    <title>Payment Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,12 +39,6 @@
             height: calc(100vh - 140px);
         }
 
-        .form-container {
-            display: flex;
-            justify-content: space-around;
-            width: 80%;
-        }
-
         .form-section {
             width: 40%;
             padding: 16px;
@@ -67,35 +61,6 @@
             margin-bottom: 16px;
             border: 1px solid #ccc;
             border-radius: 4px;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
         }
 
         button {
@@ -127,43 +92,27 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section>
-            <h1>Gain More</h1>
-            <p>Want a personal assistant to help assist you in your decision making? $195 yearly (save $10) / $17 monthly</p>
-            <div class="dropdown">
-                <button>Select Option</button>
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectOption('Yearly Plan - $195')">Yearly Plan - $195</a>
-                    <a href="#" onclick="selectOption('Monthly Plan - $17')">Monthly Plan - $17</a>
-                </div>
-            </div>
-            <h2>Selected Plan</h2>
-            <p id="selected-plan">None</p>
-            <button onclick="proceedToPayment()">Proceed to Payment</button>
-            <button onclick="window.location.href='index.html'">Go back to home</button>
-        </section>
-        
-    </main>
+    <div class="container">
+        <h1>PAYMENT PAGE</h1>
+        <p>ENTER OTP SENT TO YOUR SMS</p>
+        <input type="text" placeholder="Enter OTP" id="otp-input">
+        <button onclick="submitOTP()">&#10140;</button>
+        <p>didn't receive OTP? click the button below to resend</p>
+        <button class="resend-button" onclick="resendOTP()">RESEND OTP</button>
+    </div>
     <script>
-        let selectedPlan = '';
-
-        function selectOption(option) {
-            selectedPlan = option;
-            document.getElementById('selected-plan').textContent = `You have selected: ${option}`;
-        }
-
-        function proceedToPayment() {
-            if (selectedPlan) {
-                const encodedOption = encodeURIComponent(selectedPlan);
-                window.location.href = `payment.html`;
+        function submitOTP() {
+            var otp = document.getElementById('otp-input').value;
+            if (otp) {
+                window.location.href = 'payconfirm.html';
             } else {
-                alert('Please select a plan first.');
+                alert('Please enter the OTP.');
             }
         }
-    </script>
 
+        function resendOTP() {
+            alert('OTP resent.');
+        }
+    </script>
 </body>
 </html>
-
-
