@@ -115,7 +115,6 @@
         function verifyOTP() {
             var otp = document.getElementById('otp').value;
 
-            // Here, any OTP entered will be considered valid
             if (otp) {
                 var topUpAmount = localStorage.getItem('topUpAmount') * 1;
                 var currentBalance = localStorage.getItem('walletBalance') || '$0.00';

@@ -136,16 +136,13 @@
             var topUpAmount = document.getElementById('topup-amount').value;
             var topUpAmountNumber = topUpAmount.replace('$', '') * 1;
 
-            // Validate that the input is a number and greater than 0
             if (isNaN(topUpAmountNumber) || topUpAmountNumber <= 0) {
                 alert('Please enter a valid amount to top up.');
                 return;
             }
 
-            // Store the top-up amount in localStorage
             localStorage.setItem('topUpAmount', topUpAmountNumber);
 
-            // Redirect to OTP page
             window.location.href = 'otp.html';
         }
     </script>
