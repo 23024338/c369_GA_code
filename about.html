@@ -13,49 +13,74 @@
     }
 
     header {
-            background-color: lemonchiffon;
-            color: black;
-            padding: 40px;
-        }
+        background-color: lemonchiffon;
+        color: black;
+        padding: 40px;
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            
-        }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            margin: 0;
-        }
+    nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        margin: 0;
+    }
 
-        nav ul li {
-            margin-right: 20px;
-        }
+    nav ul li {
+        margin-right: 20px;
+    }
 
-        nav ul li a {
-            color: black;
-            text-decoration: none;
-        }
+    nav ul li a {
+        color: black;
+        text-decoration: none;
+    }
 
-        .sign-in {
-            margin-left: auto;
-        }
+    .sign-in {
+        margin-left: auto;
+    }
 
-        main {
-            background-color: papayawhip;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 160px);
-            padding: 20px;
-        }
+    main {
+        background-color: papayawhip;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 160px);
+        padding: 20px;
+    }
+
+    .content-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .content-container img {
+        max-width: 50%;
+        height: auto;
+        margin-right: 20px;
+    }
 
     h2 {
         text-align: center;
+    }
+
+    button {
+        width: 100%;
+        padding: 8px;
+        background-color: palevioletred;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: hotpink;
     }
 </style>
 <body>
@@ -79,8 +104,20 @@
         </nav>
     </header></b>
     <main>
-        <h1>About Us</h1>
-        <p>Details about the company...</p>
+        <div class="content-container">
+            <img src="investment.png" alt="Investment (about us) Image">
+            <p>We are here to help with your investment journey</p>
+            <p>What we offer:</p>
+                <ul>
+                    <li>Tips and tricks from professionals on how to invest better</li>
+                    <li>Guidance on how to make better investment choices</li>
+                    <li>Evaluation on your suitability for investing</li>
+                </ul>
+        </div>
     </main>
+    <footer>
+        &copy; 2024 More, Inc. All rights reserved.
+    </footer>
 </body>
 </html>
+

@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Check More - Larana, Inc.</title>
-</head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    header {
+        header {
             background-color: lemonchiffon;
             color: black;
             padding: 40px;
@@ -22,7 +21,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
         }
 
         nav ul {
@@ -54,52 +52,44 @@
             padding: 20px;
         }
 
-    .form-container {
-        display: flex;
-        justify-content: space-around;
-        width: 80%;
-    }
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            width: 80%;
+        }
 
-    .form-section {
-        width: 40%;
-        padding: 16px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-    }
+        .question {
+            margin-bottom: 20px;
+        }
 
-    h2 {
-        text-align: center;
-    }
+        .question label {
+            display: block;
+            margin-bottom: 8px;
+        }
 
-    label {
-        display: block;
-        margin-bottom: 8px;
-    }
+        .question input[type="radio"] {
+            margin-right: 10px;
+        }
 
-    input {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+        button {
+            width: 100%;
+            padding: 8px;
+            background-color: palevioletred;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-    button {
-        width: 100%;
-        padding: 8px;
-        background-color: palevioletred;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: hotpink;
-    }
-</style>
+        button:hover {
+            background-color: hotpink;
+        }
+    </style>
+</head>
 <body>
-    <header><b>
+    <header>
         <nav>
             <div class="nav-left">
                 <ul>
@@ -117,13 +107,71 @@
                 </ul>
             </div>
         </nav>
-    </header></b>
+    </header>
     <main>
-        <section>
+        <div class="quiz-container">
             <h1>Check More - Quiz</h1>
             <p>Take a short quiz to find out if you are suitable to start investing. Estimated time taken: 3-5 minutes.</p>
-
-        </section>
+            <form id="quizForm" onsubmit="evaluateQuiz(event)">
+                <div class="question">
+                    <label>1. I do not have any debts.</label>
+                    <input type="radio" name="qn1" value="no" required> Yes, I do have debts
+                    <input type="radio" name="qn1" value="yes"> No, I do not have any debts 
+                </div>
+                <div class="question">
+                    <label>2. I borrow money from my friends/family or the bank.</label>
+                    <input type="radio" name="qn2" value="no" required> Yes, I do
+                    <input type="radio" name="qn2" value="yes"> No, I do not
+                </div>
+                <div class="question">
+                    <label>3. Are you able to afford potential losses without it affecting your standard of living?</label>
+                    <input type="radio" name="qn3" value="yes" required> Yes
+                    <input type="radio" name="qn3" value="no"> No
+                </div>
+                <div class="question">
+                    <label>4. Do you have substantial emergency funds?</label>
+                    <input type="radio" name="qn4" value="yes" required> Yes
+                    <input type="radio" name="qn4" value="no"> No
+                </div>
+                <div class="question">
+                    <label>5. Do you have a basic understanding in investing?</label>
+                    <input type="radio" name="qn5" value="yes" required> Yes
+                    <input type="radio" name="qn5" value="no"> No
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </main>
+
+    <script>
+        function evaluateQuiz(event) {
+            event.preventDefault();
+            
+            let yesCount = 0;
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+
+            for (const answer of formData.values()) {
+                if (answer === 'yes') {
+                    yesCount++;
+                }
+            }
+
+            let result = '';
+            if (yesCount >= 4) {
+                result = 'You are suitable to start investing.';
+            } else if (yesCount === 3) {
+                result = 'Work harder and come back again.';
+            } else {
+                result = 'You are not suitable to start investing.';
+            }
+
+            localStorage.setItem('quizResult', result);
+            window.location.href = 'quizEvalu.html';
+        }
+    </script>
+        <footer>
+            &copy; 2024 More, Inc. All rights reserved.
+        </footer>
 </body>
 </html>

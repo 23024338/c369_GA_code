@@ -69,6 +69,34 @@
             margin-bottom: 20px;
         }
 
+        .subscription ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .subscription li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .subscription button {
+            background-color: palevioletred;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+            height: 44px;
+            width: 90px;
+        }
+
+        .subscription button:hover {
+            background-color: hotpink;
+        }
+
         button {
             width: 100%;
             padding: 8px;
@@ -124,11 +152,30 @@
             const walletBalance = localStorage.getItem('walletBalance') || '$0.00';
 
             const subscriptionList = document.getElementById('subscription-plans');
-            subscriptionList.innerHTML = subscriptions.length > 0 ? subscriptions.map(plan => `<li>${plan}</li>`).join('') : '<li>You are not subscribed to any plan.</li>';
+            if (subscriptions.length > 0) {
+                subscriptionList.innerHTML = subscriptions.map((plan, index) => `
+                    <li>
+                        ${plan}
+                        <button onclick="cancelSubscription(${index})">Cancel</button>
+                    </li>
+                `).join('');
+            } else {
+                subscriptionList.innerHTML = '<li>You are not subscribed to any plan.</li>';
+            }
             document.getElementById('wallet-balance').textContent = walletBalance;
+        }
+
+        function cancelSubscription(index) {
+            let subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || [];
+            subscriptions.splice(index, 1);
+            localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
+            loadProfileData();
         }
 
         window.onload = loadProfileData;
     </script>
+        <footer>
+            &copy; 2024 More, Inc. All rights reserved.
+        </footer>
 </body>
 </html>

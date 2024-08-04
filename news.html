@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest News - Larana, Inc.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: lemonchiffon;
+            color: black;
+            padding: 20px 40px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #f76c6c;
+        }
+
+        .sign-in {
+            margin-left: auto;
+        }
+
+        main {
+            background-color: papayawhip;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: calc(100vh - 80px);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .news-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .news-item h3 {
+            margin-top: 0;
+        }
+
+        .news-item p {
+            line-height: 1.5;
+        }
+
+        .learn-more {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: palevioletred;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .learn-more:hover {
+            background-color: hotpink;
+        }
+
+        footer {
+            background-color: lemonchiffon;
+            color: black;
+            padding: 10px 40px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="testimonial.html">Testimonials</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="signin.html" id="sign-in-link">Sign In</a></li>
+                    <li><a href="profile.html" id="sign-in-link">My Profile</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h2>Latest News</h2>
+        <div class="news-container">
+            <div class="news-item">
+                <h3>US tech stocks (Straits times)</h3>
+                <p>Should you invest in us tech stocks? Click to learn more</p>
+                <a href="https://www.straitstimes.com/business/invest/should-i-buy-us-tech-stocks" class="learn-more">Learn More</a>
+            </div>
+            <div class="news-item">
+                <h3>Sudden market drops (Straits times)</h3>
+                <p>Learn more about why you should prepare for sudden market drops.</p>
+                <a href="https://www.straitstimes.com/business/invest/why-investors-should-always-brace-themselves-for-sudden-market-drop" class="learn-more">Learn More</a>
+            </div>
+            <div class="news-item">
+                <h3>Avoid falling into scams (Straits times)</h3>
+                <p>Keep yourself updated with current affairs. This will save yourself from scams.</p>
+                <a href="https://www.straitstimes.com/business/invest/why-keeping-updated-with-the-news-can-save-you-from-scams" class="learn-more">Learn More</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

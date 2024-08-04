@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Evaluation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: lemonchiffon;
+            color: black;
+            padding: 40px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        main {
+            background-color: papayawhip;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 140px);
+            padding: 20px;
+        }
+
+        .result-container {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: palevioletred;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Quiz Evaluation</h1>
+    </header>
+    <main>
+        <div class="result-container">
+            <h2>Your Quiz Result</h2>
+            <p id="quizResult"></p>
+            <button onclick="window.location.href='checkmore.html'">Retake Quiz</button>
+            <button onclick="window.location.href='index.html'">Go to Home</button>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const result = localStorage.getItem('quizResult');
+            document.getElementById('quizResult').textContent = result;
+        });
+    </script>
+        <footer>
+            &copy; 2024 More, Inc. All rights reserved.
+        </footer>
+</body>
+</html>
